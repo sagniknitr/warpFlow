@@ -1,7 +1,9 @@
 #ifndef __COMMON_DATATYPES_H__
 #define __COMMON_DATATYPES_H__
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef long long int64_t; /**< @brief Signed 64-bit integer. */
 typedef int int32_t;        /**< @brief Signed 32-bit integer. */
@@ -18,5 +20,8 @@ typedef char u8_status;
 
 #define nullptr 0x00
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

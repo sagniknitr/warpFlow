@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "warpFlow.h"
 
 #define PI 3.1415926535897932384626433832
@@ -59,6 +63,42 @@ uint8_t get_gaussian(gaussian_mixture* gmm, float32_t f32_x, int32_t s32_i,
            (2 * PI * gmm->f32_beta[s32_k]);
 }
 
+<<<<<<< HEAD
+gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm,
+                                          int32_t s32_channels) {
+  gaussian_mixture* GM = nullptr;
+  gaussian_mixture_allocate(GM, s32_channels);
+  for (int32_t s32_i = 0; s32_i < s32_channels; s32_i++) {
+    GM->f32_alpha[s32_i] = gmm->f32_alpha[s32_i];
+    GM->f32_sigma[s32_i] = gmm->f32_sigma[s32_i];
+    GM->f32_beta[s32_i] = gmm->f32_beta[s32_i];
+  }
+  gaussian_mixture_square(GM, s32_channels);
+  return GM;
+}
+
+float32_t get_exponent(float32_t f32_input) {
+  float32_t f32_y = 0.0f;
+  float32_t f32_b = 0.5f;
+  const int32_t precision = 24;
+
+  const float32_t LOG2 = 0.693147180;
+
+  while (f32_input < 1.0) {
+    f32_input /= 2;
+    f32_y -= 1;
+  }
+
+  for (int i = 0; i < precision; i++) {
+    f32_input = f32_input * f32_input;
+
+    if (f32_input >= 2.0) {
+      f32_input /= 2.0;
+      f32_y += f32_b;
+    }
+    f32_b /= 2.0;
+  }
+=======
 gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm, int32_t s32_channels) {
 
 	gaussian_mixture* GM = nullptr;
@@ -73,7 +113,14 @@ gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm, int32_t s32_cha
   
 }
 
+>>>>>>> 2a7ccbdc732a45f002492107402c9dbab1ef13d5
 
+  return f32_y * LOG2;
+}
+
+#ifdef __cplusplus
+}
+#endif
 // class Laplacian
 //{
 // public:

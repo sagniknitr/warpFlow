@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\noise_model.c" />
+    <ClCompile Include="..\..\Source\utilities.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\common_datatypes.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{C59F6ACC-AC6D-418D-9CD9-65714ABF0FBC}</ProjectGuid>
@@ -71,7 +78,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\warpFlow\Test\Test_Input;..\..\..\warpFlow\Include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\warpFlow\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>..\..\..\warpFlow\Test\Test_Input;..\..\..\warpFlow\Include;$(IncludePath)</IncludePath>
@@ -128,8 +135,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
