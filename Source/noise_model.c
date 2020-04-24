@@ -63,7 +63,6 @@ uint8_t get_gaussian(gaussian_mixture* gmm, float32_t f32_x, int32_t s32_i,
            (2 * PI * gmm->f32_beta[s32_k]);
 }
 
-<<<<<<< HEAD
 gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm,
                                           int32_t s32_channels) {
   gaussian_mixture* GM = nullptr;
@@ -98,7 +97,7 @@ float32_t get_exponent(float32_t f32_input) {
     }
     f32_b /= 2.0;
   }
-=======
+}
 gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm, int32_t s32_channels) {
 
 	gaussian_mixture* GM = nullptr;
@@ -113,10 +112,6 @@ gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm, int32_t s32_cha
   
 }
 
->>>>>>> 2a7ccbdc732a45f002492107402c9dbab1ef13d5
-
-  return f32_y * LOG2;
-}
 
 #ifdef __cplusplus
 }
