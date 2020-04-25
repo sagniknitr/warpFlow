@@ -379,8 +379,7 @@ void warp_image_flow(uint8_t pWarpIm2[], const uint8_t pIm1[],
     }
 }
 
-template <class uint8_t, class T2>
-void ImageProcessing::warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* pVx,
+void warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* pVx,
                                 const T2* pVy, int32_t width, int32_t height,
                                 int32_t nChannels) {
   memset(pWarpIm2, 0, sizeof(uint8_t) * width * height * nChannels);
@@ -397,8 +396,7 @@ void ImageProcessing::warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* 
     }
 }
 
-template <class uint8_t, class T2>
-void ImageProcessing::warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
+void warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
                                           const T2* pVx, const T2* pVy,
                                           int32_t width, int32_t height,
                                           int32_t nChannels) {
@@ -420,8 +418,7 @@ void ImageProcessing::warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
 //////////////////////////////////////////////////////////////////////////////////////
 // different format
 //////////////////////////////////////////////////////////////////////////////////////
-template <class uint8_t, class T2>
-void ImageProcessing::warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* flow,
+void warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* flow,
                                 int32_t width, int32_t height, int32_t nChannels) {
   memset(pWarpIm2, 0, sizeof(uint8_t) * width * height * nChannels);
   for (int32_t i = 0; i < height; i++)
@@ -437,8 +434,7 @@ void ImageProcessing::warpImage(uint8_t pWarpIm2, const uint8_t pIm2, const T2* 
     }
 }
 
-template <class uint8_t, class T2>
-void ImageProcessing::warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
+void warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
                                           const T2* flow, int32_t width, int32_t height,
                                           int32_t nChannels) {
   memset(pWarpIm2, 0, sizeof(uint8_t) * width * height * nChannels);
@@ -456,8 +452,7 @@ void ImageProcessing::warpImage_transpose(uint8_t pWarpIm2, const uint8_t pIm2,
     }
 }
 
-template <class uint8_t, class T2, class T3>
-void ImageProcessing::warpImage(uint8_t pWarpIm2, T3* pMask, const uint8_t pIm1,
+void warpImage(uint8_t pWarpIm2, T3* pMask, const uint8_t pIm1,
                                 const uint8_t pIm2, const T2* pVx, const T2* pVy,
                                 int32_t width, int32_t height, int32_t nChannels) {
   memset(pWarpIm2, 0, sizeof(uint8_t) * width * height * nChannels);
