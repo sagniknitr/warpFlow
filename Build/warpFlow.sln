@@ -5,10 +5,7 @@ VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "warpFlowLib", "warpFlow.vcxproj", "{C59F6ACC-AC6D-418D-9CD9-65714ABF0FBC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "warpFlowTest", "..\warpFlowtest\warpFlowtest.vcxproj", "{A542E0FB-1D46-4FFF-AD04-E84E4D705BA4}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C59F6ACC-AC6D-418D-9CD9-65714ABF0FBC} = {C59F6ACC-AC6D-418D-9CD9-65714ABF0FBC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "warpFlowTest", "warpFlowtest.vcxproj", "{A542E0FB-1D46-4FFF-AD04-E84E4D705BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

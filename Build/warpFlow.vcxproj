@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\distributions.c" />
     <ClCompile Include="..\Source\noise_model.c" />
     <ClCompile Include="..\Source\utilities.c" />
   </ItemGroup>
