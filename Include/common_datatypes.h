@@ -16,7 +16,8 @@ typedef short unsigned uint16_t;     /**< @brief Unsigned 16-bit integer. */
 typedef char unsigned uint8_t;       /**< @brief Unsigned  8-bit integer. */
 
 typedef float float32_t;
-typedef char u8_status;
+typedef signed char s8_status;
+
 
 #define nullptr 0x00
 

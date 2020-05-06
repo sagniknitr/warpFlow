@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\coarse_to_fine_pyramids.c" />
     <ClCompile Include="..\Source\distributions.c" />
     <ClCompile Include="..\Source\noise_model.c" />
     <ClCompile Include="..\Source\utilities.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\common_datatypes.h" />
+    <ClInclude Include="..\Include\utilities.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
