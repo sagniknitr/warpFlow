@@ -12,7 +12,7 @@ void construct_pyramid(const uint8_t image[],uint32_t u32_width,  float32_t rati
 	if(ratio>0.98 || ratio<0.4)
 		ratio=0.75;
 	// first decide how many levels
-	nLevels=log((float32_t)minWidth/u32_width)/log(ratio);
+	uint32_t nLevels=log((float32_t)minWidth/u32_width)/log(ratio);
 	if(ImPyramid!=NULL)
 		delete []ImPyramid;
 	ImPyramid=new DImage[nLevels];

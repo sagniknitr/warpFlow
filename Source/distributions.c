@@ -25,7 +25,6 @@ void get_mean_var(uint8_t signal[], int32_t length, float32_t* mean,
   *var = m_var;
 }
 
-
 uint32_t sum(int32_t num_data, uint8_t pData[]) {
   uint32_t sum = 0;
   int32_t i;
@@ -40,12 +39,7 @@ void normalize(int32_t num_data, uint8_t pData[]) {
   for (i = 0; i < num_data; i++) pData[i] /= Sum;
 }
 
-
-
-////////////////////////////////////////////////////////////
-// sort data in descending order
-template <class T>
-void CStochastic::sort(int32_t Number, T* pData, int32_t* pIndex, SortType m_SortType) {
+void sort(int32_t Number, T* pData, int32_t* pIndex, SortType m_SortType) {
   int32_t i, j, offset_extreme, *flag;
   float32_t extreme;
   flag = new int32_t[Number];
@@ -70,34 +64,23 @@ void CStochastic::sort(int32_t Number, T* pData, int32_t* pIndex, SortType m_Sor
   delete flag;
 }
 
-template <class T>
-T CStochastic::Min(int32_t NumData, T* pData) {
+uint8_t min_data(int32_t NumData, uint8_t pData[]) {
   int32_t i;
-  T result = pData[0];
+  uint8_t result = pData[0];
   for (i = 1; i < NumData; i++) result = __min(result, pData[i]);
   return result;
 }
 
-template <class T>
-T CStochastic::Min(int32_t NumData, T* pData1, T* pData2) {
+uint8_t minimum(int32_t NumData, uint8_t pData1[], uint8_t pData2[]) {
   int32_t i;
-  T result = pData1[0] + pData2[0];
+  uint8_t result = pData1[0] + pData2[0];
   for (i = 1; i < NumData; i++) result = __min(result, pData1[i] + pData2[i]);
   return result;
 }
 
-template <class T>
-T CStochastic::Max(int32_t NumData, T* pData) {
-  int32_t i;
-  T result = pData[0];
-  for (i = 1; i < NumData; i++) result = __max(result, pData[i]);
-  return result;
-}
-
-template <class T>
-int32_t CStochastic::FindMax(int32_t NumData, T* pData) {
+int32_t max_loc(int32_t NumData, uint8_t pData[]) {
   int32_t i, index;
-  T result = pData[0];
+  int32_t result = pData[0];
   index = 0;
   for (i = 1; i < NumData; i++)
     if (pData[i] > result) {
@@ -107,10 +90,9 @@ int32_t CStochastic::FindMax(int32_t NumData, T* pData) {
   return index;
 }
 
-template <class T1, class T2>
-void CStochastic::ComputeMeanCovariance(int32_t Dim, int32_t NumData, T1* pData,
-                                        T2* pMean, T2* pCovariance,
-                                        float32_t* pWeight) {
+void compute_mean_covariance(int32_t Dim, int32_t NumData, uint8_t pData[],
+                             float32_t pMean[], float32_t pCovariance[],
+                             float32_t* pWeight) {
   int32_t i, j, k;
   memset(pMean, 0, sizeof(T2) * Dim);
   memset(pCovariance, 0, sizeof(T2) * Dim * Dim);
@@ -160,9 +142,8 @@ void CStochastic::ComputeMeanCovariance(int32_t Dim, int32_t NumData, T1* pData,
   delete[] pTempVector;
 }
 
-template <class T1, class T2>
-void CStochastic::ComputeVectorMean(int32_t Dim, int32_t NumData, T1* pData, T2* pMean,
-                                    float32_t* pWeight) {
+void ComputeVectorMean(int32_t Dim, int32_t NumData, T1* pData, T2* pMean,
+                       float32_t* pWeight) {
   int32_t i, j;
   memset(pMean, 0, sizeof(T2) * Dim);
   bool IsWeightLoaded;
@@ -187,8 +168,8 @@ void CStochastic::ComputeVectorMean(int32_t Dim, int32_t NumData, T1* pData, T2*
   for (j = 0; j < Dim; j++) pMean[j] /= Sum;
 }
 
-template <class T1, class T2>
-float32_t CStochastic::VectorSquareDistance(int32_t Dim, T1* pVector1, T2* pVector2) {
+float32_t vector_square_distance(int32_t Dim, float32_t pVector1[],
+                                 float32_t pVector2[]) {
   float32_t result = 0, temp;
   int32_t i;
   for (i = 0; i < Dim; i++) {
@@ -198,11 +179,9 @@ float32_t CStochastic::VectorSquareDistance(int32_t Dim, T1* pVector1, T2* pVect
   return result;
 }
 
-template <class T1>
-void CStochastic::KMeanClustering(int32_t Dim, int32_t NumData, int32_t NumClusters,
-                                  T1* pData, int32_t* pPartition,
-                                  float32_t** pClusterMean, int32_t MaxIterationNum,
-                                  int32_t MinClusterSampleNumber) {
+void KMeanClustering(int32_t Dim, int32_t NumData, int32_t NumClusters,
+                     T1* pData, int32_t* pPartition, float32_t** pClusterMean,
+                     int32_t MaxIterationNum, int32_t MinClusterSampleNumber) {
   int32_t i, j, k, l, Index, ClusterSampleNumber;
   float32_t MinDistance, Distance;
   float32_t** pCenters;
@@ -254,7 +233,6 @@ _CStochastic_KMeanClustering_InitializePartition:
   delete[] pCenters;
 }
 
-
 float32_t norm(uint8_t X[], int32_t Dim) {
   float32_t result = 0;
   int32_t i;
@@ -263,9 +241,8 @@ float32_t norm(uint8_t X[], int32_t Dim) {
   return result;
 }
 
-template <class T1, class T2>
-int32_t CStochastic::FindClosestPoint(T1* pPointSet, int32_t NumPoints, int32_t nDim,
-                                  T2* QueryPoint) {
+int32_t FindClosestPoint(T1* pPointSet, int32_t NumPoints, int32_t nDim,
+                         T2* QueryPoint) {
   int32_t i, j, Index = 0, offset;
   T1 MinDistance, Distance, x;
   MinDistance = 0;
@@ -286,8 +263,9 @@ int32_t CStochastic::FindClosestPoint(T1* pPointSet, int32_t NumPoints, int32_t 
 }
 
 template <class T1, class T2>
-void CStochastic::GaussianFiltering(T1* pSrcArray, T2* pDstArray, int32_t NumPoints,
-                                    int32_t nChannels, int32_t size, float32_t sigma) {
+void CStochastic::GaussianFiltering(T1* pSrcArray, T2* pDstArray,
+                                    int32_t NumPoints, int32_t nChannels,
+                                    int32_t size, float32_t sigma) {
   int32_t i, j, u, l;
   float32_t *pGaussian, temp;
   pGaussian = new float32_t[2 * size + 1];
@@ -304,3 +282,5 @@ void CStochastic::GaussianFiltering(T1* pSrcArray, T2* pDstArray, int32_t NumPoi
     }
   delete pGaussian;
 }
+
+
