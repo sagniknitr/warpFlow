@@ -2,7 +2,7 @@
 extern "C" {
 #endif
 
-#include "warpFlow.h"
+#include "common_datatypes.h"
 
 #define PI 3.1415926535897932384626433832
 
@@ -15,7 +15,7 @@ typedef struct _gaussian_mixture {
   float32_t* f32_beta_square;
 } gaussian_mixture;
 
-u8_status init_gaussian_mixture(int32_t s32_channels) {
+s8_status init_gaussian_mixture(int32_t s32_channels) {
   gaussian_mixture* gmm = nullptr;
   gmm->s32_num_of_channels = s32_channels;
   gaussian_mixture_allocate(gmm, s32_channels);
@@ -27,7 +27,7 @@ u8_status init_gaussian_mixture(int32_t s32_channels) {
   gaussian_mixture_square(gmm, s32_channels);
 }
 
-u8_status gaussian_mixture_square(gaussian_mixture* gmm, int32_t s32_channel) {
+s8_status gaussian_mixture_square(gaussian_mixture* gmm, int32_t s32_channel) {
   for (uint32_t u32_c = 0; u32_c < (uint32_t)s32_channel; u32_c++) {
     gmm->f32_sigma_square[u32_c] =
         gmm->f32_sigma[u32_c] * gmm->f32_sigma[u32_c];
@@ -116,20 +116,3 @@ gaussian_mixture* shrink_gaussian_mixture(gaussian_mixture* gmm, int32_t s32_cha
 #ifdef __cplusplus
 }
 #endif
-// class Laplacian
-//{
-// public:
-//	int nChannels;
-//	Vector<double> scale;
-// public:
-//	Laplacian()
-//	{
-//	}
-//	Laplacian(int _nChannels)
-//	{
-//		nChannels = _nChannels;
-//		scale.allocate(nChannels);
-//	}
-//	Laplacian(const Laplacian
-//
-//};
