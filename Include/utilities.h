@@ -16,6 +16,16 @@ typedef struct __log_LUT {
 /*generic log implementation*/
  extern float32_t log(float32_t);
 
+typedef enum _interpolation_type {
+	 BILIENAR = 0,
+	 BICUBIC, 
+	 CUBICSPLINE
+ } interpolation_type;
+
+typedef enum _noisemodel {
+	LAPLACIAN = 0
+} noisemodel;
+
 
 
 #ifdef __cplusplus
